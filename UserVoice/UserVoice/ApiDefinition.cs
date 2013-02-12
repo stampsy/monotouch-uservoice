@@ -28,7 +28,7 @@ namespace UserVoice
 		
 		[Static]
 		[Export ("version")]
-		string Version ();
+        string Version { get; }
 		
 		[Static]
 		[Export ("setExternalId:forScope:")]
@@ -51,7 +51,7 @@ namespace UserVoice
 		UVDelegate Delegate { get; set; }
 
 		[Static]
-		[Export ("delegate", ArgumentSemantic.Assign)][NullAllowed]
+		[Export ("delegate")][NullAllowed]
 		NSObject WeakDelegate { get; set; }
 		
 	}
@@ -106,15 +106,15 @@ namespace UserVoice
 		
 		[Static]
 		[Export ("configWithSite:andKey:andSecret:")]
-		UVConfig Config (string site, string key, string secret);
+		UVConfig Create (string site, string key, string secret);
 		
 		[Static]
 		[Export ("configWithSite:andKey:andSecret:andSSOToken:")]
-		UVConfig Config (string site, string key, string secret, string token);
+        UVConfig Create (string site, string key, string secret, string token);
 		
 		[Static]
 		[Export ("configWithSite:andKey:andSecret:andEmail:andDisplayName:andGUID:")]
-		UVConfig Config (string site, string key, string secret, string email, string displayName, string guid);
+        UVConfig Create (string site, string key, string secret, string email, string displayName, string guid);
 		
 		[Export ("initWithSite:andKey:andSecret:")]
 		NSObject Init (string theSite, string theKey, string theSecret);
