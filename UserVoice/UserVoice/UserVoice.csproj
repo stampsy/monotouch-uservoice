@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3A0C5D98-D568-43C1-A877-B1BA00BA4A87}</ProjectGuid>
+    <ProjectTypeGuids>{F5B4F3BC-B597-4E2B-B552-EF5D8A32436F};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>UserVoice</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>UserVoice</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="monotouch" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="UVResources.bundle\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Xamarin.ObjcBinding.CSharp.targets" />
+  <ItemGroup>
+    <ObjcBindingNativeLibrary Include="libUserVoice.a" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="libUserVoice.linkwith.cs">
+      <DependentUpon>libUserVoice.a</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="UVResources.bundle\uv_article.png" />
+    <BundleResource Include="UVResources.bundle\uv_article%402x.png" />
+    <BundleResource Include="UVResources.bundle\uv_default_avatar.png" />
+    <BundleResource Include="UVResources.bundle\uv_default_avatar%402x.png" />
+    <BundleResource Include="UVResources.bundle\uv_idea.png" />
+    <BundleResource Include="UVResources.bundle\uv_idea%402x.png" />
+    <BundleResource Include="UVResources.bundle\uv_logo.png" />
+    <BundleResource Include="UVResources.bundle\uv_logo%402x.png" />
+    <BundleResource Include="UVResources.bundle\uv_vote_chicklet.png" />
+    <BundleResource Include="UVResources.bundle\uv_vote_chicklet%402x.png" />
+    <BundleResource Include="UVResources.bundle\uv_vote_chicklet_empty.png" />
+    <BundleResource Include="UVResources.bundle\uv_vote_chicklet_empty%402x.png" />
+    <BundleResource Include="UVResources.bundle\uv_x.png" />
+    <BundleResource Include="UVResources.bundle\uv_x%402x.png" />
+    <BundleResource Include="UVResources.bundle\en.lproj\UserVoice.strings" />
+    <BundleResource Include="UVResources.bundle\fr.lproj\UserVoice.strings" />
+    <BundleResource Include="UVResources.bundle\it.lproj\UserVoice.strings" />
+    <BundleResource Include="UVResources.bundle\nl.lproj\UserVoice.strings" />
+    <BundleResource Include="UVResources.bundle\zh-Hant.lproj\UserVoice.strings" />
+  </ItemGroup>
+</Project>
