@@ -37,9 +37,6 @@
     <Reference Include="monotouch" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,24 +52,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\en.lproj\UserVoice.strings" />
-    <BundleResource Include="Resources\fr.lproj\UserVoice.strings" />
-    <BundleResource Include="Resources\it.lproj\UserVoice.strings" />
-    <BundleResource Include="Resources\nl.lproj\UserVoice.strings" />
-    <BundleResource Include="Resources\zh-Hant.lproj\UserVoice.strings" />
-    <BundleResource Include="Resources\uv_article.png" />
-    <BundleResource Include="Resources\uv_article%402x.png" />
-    <BundleResource Include="Resources\uv_default_avatar.png" />
-    <BundleResource Include="Resources\uv_default_avatar%402x.png" />
-    <BundleResource Include="Resources\uv_idea.png" />
-    <BundleResource Include="Resources\uv_idea%402x.png" />
-    <BundleResource Include="Resources\uv_logo.png" />
-    <BundleResource Include="Resources\uv_logo%402x.png" />
-    <BundleResource Include="Resources\uv_vote_chicklet.png" />
-    <BundleResource Include="Resources\uv_vote_chicklet%402x.png" />
-    <BundleResource Include="Resources\uv_vote_chicklet_empty.png" />
-    <BundleResource Include="Resources\uv_vote_chicklet_empty%402x.png" />
-    <BundleResource Include="Resources\uv_x.png" />
-    <BundleResource Include="Resources\uv_x%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_article.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_article%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_default_avatar.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_default_avatar%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_idea.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_idea%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_logo.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_logo%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_vote_chicklet.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_vote_chicklet%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_vote_chicklet_empty.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_vote_chicklet_empty%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\uv_x%402x.png" />
+    <BundleResource Include="UserVoiceResources.bundle\en.lproj\UserVoice.strings" />
+    <BundleResource Include="UserVoiceResources.bundle\fr.lproj\UserVoice.strings" />
+    <BundleResource Include="UserVoiceResources.bundle\it.lproj\UserVoice.strings" />
+    <BundleResource Include="UserVoiceResources.bundle\nl.lproj\UserVoice.strings" />
+    <BundleResource Include="UserVoiceResources.bundle\zh-Hant.lproj\UserVoice.strings" />
   </ItemGroup>
 </Project>
