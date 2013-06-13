@@ -1,0 +1,3 @@
+[submodule "src/Native/uservoice-ios-sdk"]
+	path = src/Native/uservoice-ios-sdk
+	url = https://github.com/uservoice/uservoice-ios-sdk.git
