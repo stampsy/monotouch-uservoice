@@ -1,3 +1,5 @@
+*.userprefs
+
 # OS X
 .DS_Store
 
