@@ -71,33 +71,8 @@
     <BundleResource Include="UserVoiceResources.bundle\it.lproj\UserVoice.strings" />
     <BundleResource Include="UserVoiceResources.bundle\nl.lproj\UserVoice.strings" />
     <BundleResource Include="UserVoiceResources.bundle\zh-Hant.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\ca.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\cs.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\da.lproj\UserVoice.strings" />
     <BundleResource Include="UserVoiceResources.bundle\de.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\el.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\en-GB.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\es.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\fi.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\hr.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\hu.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\id.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\ja.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\ko.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\ms.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\nb.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\pl.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\pt-PT.lproj\UserVoice.strings" />
     <BundleResource Include="UserVoiceResources.bundle\pt.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\ro.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\ru.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\sk.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\sv.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\th.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\tr.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\uk.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\vi.lproj\UserVoice.strings" />
-    <BundleResource Include="UserVoiceResources.bundle\zh-Hans.lproj\UserVoice.strings" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserVoiceResources.bundle\" />
