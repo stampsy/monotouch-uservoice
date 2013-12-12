@@ -230,6 +230,9 @@ namespace UserVoice
 		
 		[Export ("navigationBarTintColor")]
 		UIColor NavigationBarTintColor { get; }
+
+		[Export ("navigationBarTextColor")]
+		UIColor NavigationBarTextColor { get; }
 	}
 }
 
