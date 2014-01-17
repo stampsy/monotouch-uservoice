@@ -1,238 +1,175 @@
-using System;
-using System.Drawing;
-
-using MonoTouch.ObjCRuntime;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoTouch.ObjCRuntime;
 
-namespace UserVoice
-{
+namespace UserVoice {
 
 	[BaseType (typeof (NSObject))]
-	interface UserVoice {
-		[Static]
-		[Export ("presentUserVoiceInterfaceForParentViewController:andConfig:")]
-		void PresentUserVoiceInterface (UIViewController parentViewController, UVConfig config);
-		
-		[Static]
-		[Export ("presentUserVoiceContactUsFormForParentViewController:andConfig:")]
-		void PresentUserVoiceContactUsForm (UIViewController parentViewController, UVConfig config);
-		
-		[Static]
-		[Export ("presentUserVoiceNewIdeaFormForParentViewController:andConfig:")]
-		void PresentUserVoiceNewIdeaForm (UIViewController parentViewController, UVConfig config);
-		
-		[Static]
-		[Export ("presentUserVoiceForumForParentViewController:andConfig:")]
-		void PresentUserVoiceForum (UIViewController parentViewController, UVConfig config);
-		
-		[Static]
-		[Export ("version")]
-        string Version { get; }
-		
-		[Static]
-		[Export ("setExternalId:forScope:")]
-		void SetExternalId (string identifier, string scope);
-		
-		[Static]
-		[Export ("presentUserVoiceModalViewControllerForParent:andSite:andKey:andSecret:")]
-		void PresentUserVoiceModalViewController (UIViewController viewController, string site, string key, string secret);
-		
-		[Static]
-		[Export ("presentUserVoiceModalViewControllerForParent:andSite:andKey:andSecret:andSsoToken:")]
-		void PresentUserVoiceModalViewController (UIViewController viewController, string site, string key, string secret, string token);
-		
-		[Static]
-		[Export ("presentUserVoiceModalViewControllerForParent:andSite:andKey:andSecret:andEmail:andDisplayName:andGUID:")]
-		void PresentUserVoiceModalViewController (UIViewController viewController, string site, string key, string secret, string email, string displayName, string guid);
+	public partial interface UVConfig {
 
-		[Static]
-		[Wrap ("WeakDelegate")]
-		UVDelegate Delegate { get; set; }
+		[Static, Export ("configWithSite:")]
+		UVConfig ConfigWithSite (string site);
 
-		[Static]
-		[Export ("delegate")][NullAllowed]
-		NSObject WeakDelegate { get; set; }
-		
+		[Static, Export ("configWithSite:andKey:andSecret:")]
+		UVConfig ConfigWithSite (string site, string key, string secret);
+
+		[Static, Export ("configWithSite:andKey:andSecret:andSSOToken:")]
+		UVConfig ConfigWithSite (string site, string key, string secret, string token);
+
+		[Static, Export ("configWithSite:andKey:andSecret:andEmail:andDisplayName:andGUID:")]
+		UVConfig ConfigWithSite (string site, string key, string secret, string email, string displayName, string guid);
+
+		[Export ("site", ArgumentSemantic.Retain)]
+		string Site { get; set; }
+
+		[Export ("key", ArgumentSemantic.Retain)]
+		string Key { get; set; }
+
+		[Export ("secret", ArgumentSemantic.Retain)]
+		string Secret { get; set; }
+
+		[Export ("ssoToken", ArgumentSemantic.Retain)]
+		string SsoToken { get; set; }
+
+		[Export ("displayName", ArgumentSemantic.Retain)]
+		string DisplayName { get; set; }
+
+		[Export ("email", ArgumentSemantic.Retain)]
+		string Email { get; set; }
+
+		[Export ("guid", ArgumentSemantic.Retain)]
+		string Guid { get; set; }
+
+		[Export ("customFields", ArgumentSemantic.Retain)]
+		NSDictionary CustomFields { get; set; }
+
+		[Export ("topicId")]
+		int TopicId { get; set; }
+
+		[Export ("forumId")]
+		int ForumId { get; set; }
+
+		[Export ("showForum")]
+		bool ShowForum { get; set; }
+
+		[Export ("showPostIdea")]
+		bool ShowPostIdea { get; set; }
+
+		[Export ("showContactUs")]
+		bool ShowContactUs { get; set; }
+
+		[Export ("showKnowledgeBase")]
+		bool ShowKnowledgeBase { get; set; }
+
+		[Export ("extraTicketInfo", ArgumentSemantic.Retain)]
+		string ExtraTicketInfo { get; set; }
+
+		[Export ("userTraits", ArgumentSemantic.Retain)]
+		NSDictionary UserTraits { get; set; }
+
+		[Export ("identifyUserWithEmail:name:guid:")]
+		void IdentifyUserWithEmail (string email, string name, string guid);
+
+		[Export ("traits")]
+		NSDictionary Traits { get; }
+	}
+
+	[Model, BaseType (typeof (NSObject))]
+	public partial interface UVDelegate {
+
+		[Export ("userVoiceWasDismissed")]
+		void UserVoiceWasDismissed ();
+
+		[Export ("userVoiceRequestsDismissal")]
+		void UserVoiceRequestsDismissal ();
+	}
+
+	[BaseType (typeof (NSObject))]
+	public partial interface UVStyleSheet {
+
+		[Static, Export ("instance")]
+		UVStyleSheet Instance { get; }
+
+		[Export ("tintColor", ArgumentSemantic.Retain)]
+		UIColor TintColor { get; set; }
+
+		[Export ("tableViewBackgroundColor", ArgumentSemantic.Retain)]
+		UIColor TableViewBackgroundColor { get; set; }
+
+		[Export ("navigationBarBackgroundColor", ArgumentSemantic.Retain)]
+		UIColor NavigationBarBackgroundColor { get; set; }
+
+		[Export ("navigationBarTextColor", ArgumentSemantic.Retain)]
+		UIColor NavigationBarTextColor { get; set; }
+
+		[Export ("navigationBarTextShadowColor", ArgumentSemantic.Retain)]
+		UIColor NavigationBarTextShadowColor { get; set; }
+
+		[Export ("navigationBarBackgroundImage", ArgumentSemantic.Retain)]
+		UIImage NavigationBarBackgroundImage { get; set; }
+
+		[Export ("navigationBarFont", ArgumentSemantic.Retain)]
+		UIFont NavigationBarFont { get; set; }
+
+		[Export ("loadingViewBackgroundColor", ArgumentSemantic.Retain)]
+		UIColor LoadingViewBackgroundColor { get; set; }
 	}
 	
 	[BaseType (typeof (NSObject))]
-	[Model]
-	interface UVDelegate {
-		[Export ("userVoiceWasDismissed")]
-		void UserVoiceWasDismissed ();
-	}
+	public partial interface UserVoice {
 
-	[BaseType (typeof (NSObject))]
-	interface UVConfig {
-		[Export ("site")]
-		string Site { get; set; }
-		
-		[Export ("key")]
-		string Key { get; set; }
-		
-		[Export ("secret")]
-		string Secret { get; set; }
-		
-		[Export ("ssoToken")]
-		string SsoToken { get; set; }
-		
-		[Export ("displayName")]
-		string DisplayName { get; set; }
-		
-		[Export ("email")]
-		string Email { get; set; }
-		
-		[Export ("guid")]
-		string Guid { get; set; }
-		
-		[Export ("customFields")]
-		NSDictionary CustomFields { get; set; }
-		
-		[Export ("topicId")]
-		int TopicId { get; set; }
-		
-		[Export ("showForum")]
-		bool ShowForum { get; set; }
-		
-		[Export ("showPostIdea")]
-		bool ShowPostIdea { get; set; }
-		
-		[Export ("showContactUs")]
-		bool ShowContactUs { get; set; }
-		
-		[Export ("showKnowledgeBase")]
-		bool ShowKnowledgeBase { get; set; }
-		
-		[Static]
-		[Export ("configWithSite:andKey:andSecret:")]
-		UVConfig Create (string site, string key, string secret);
-		
-		[Static]
-		[Export ("configWithSite:andKey:andSecret:andSSOToken:")]
-        UVConfig Create (string site, string key, string secret, string token);
-		
-		[Static]
-		[Export ("configWithSite:andKey:andSecret:andEmail:andDisplayName:andGUID:")]
-        UVConfig Create (string site, string key, string secret, string email, string displayName, string guid);
-		
-		[Export ("initWithSite:andKey:andSecret:")]
-		NSObject Init (string theSite, string theKey, string theSecret);
-		
-		[Export ("initWithSite:andKey:andSecret:andSSOToken:")]
-		NSObject Init (string theSite, string theKey, string theSecret, string theToken);
-		
-		[Export ("initWithSite:andKey:andSecret:andEmail:andDisplayName:andGUID:")]
-		NSObject Init (string theSite, string theKey, string theSecret, string theEmail, string theDisplayName, string theGuid);
-		
-		[Export ("wasSignedInBySDK")]
-		bool WasSignedInBySDK { get; }
-	}
+		[Static, Export ("initialize:")]
+		void Initialize (UVConfig config);
 
-	[BaseType (typeof (NSObject))]
-	interface UVStyleSheet {
-		[Static]
-		[Export ("styleSheet")]
-		UVStyleSheet StyleSheet { get; set; }
-		
-		[Static]
-		[Export ("zebraBgColor:")]
-		UIColor CurrentZebraBgColor (bool dark);
-		
-		[Static]
-		[Export ("backgroundColor")]
-		UIColor CurrentBackgroundColor { get; }
-		
-		[Static]
-		[Export ("darkZebraBgColor")]
-		UIColor CurrentDarkZebraBgColor { get; }
-		
-		[Static]
-		[Export ("lightZebraBgColor")]
-		UIColor CurrentLightZebraBgColor { get; }
-		
-		[Static]
-		[Export ("topSeparatorColor")]
-		UIColor CurrentTopSeparatorColor { get; }
-		
-		[Static]
-		[Export ("bottomSeparatorColor")]
-		UIColor CurrentBottomSeparatorColor { get; }
-		
-		[Static]
-		[Export ("tableViewHeaderColor")]
-		UIColor CurrentTableViewHeaderColor { get; }
-		
-		[Static]
-		[Export ("tableViewHeaderShadowColor")]
-		UIColor CurrentTableViewHeaderShadowColor { get; }
-		
-		[Static]
-		[Export ("primaryTextColor")]
-		UIColor CurrentPrimaryTextColor { get; }
-		
-		[Static]
-		[Export ("secondaryTextColor")]
-		UIColor CurrentSecondaryTextColor { get; }
-		
-		[Static]
-		[Export ("signedInUserTextColor")]
-		UIColor CurrentSignedInUserTextColor { get; }
-		
-		[Static]
-		[Export ("labelTextColor")]
-		UIColor CurrentLabelTextColor { get; }
-		
-		[Static]
-		[Export ("linkTextColor")]
-		UIColor CurrentLinkTextColor { get; }
-		
-		[Static]
-		[Export ("alertTextColor")]
-		UIColor CurrentAlertTextColor { get; }
-		
-		[Static]
-		[Export ("navigationBarTintColor")]
-		UIColor CurrentNavigationBarTintColor { get; }
-		
-		[Export ("backgroundColor")]
-		UIColor BackgroundColor { get; }
-		
-		[Export ("darkZebraBgColor")]
-		UIColor DarkZebraBgColor { get; }
-		
-		[Export ("lightZebraBgColor")]
-		UIColor LightZebraBgColor { get; }
-		
-		[Export ("tableViewHeaderColor")]
-		UIColor TableViewHeaderColor { get; }
-		
-		[Export ("tableViewHeaderShadowColor")]
-		UIColor TableViewHeaderShadowColor { get; }
-		
-		[Export ("primaryTextColor")]
-		UIColor PrimaryTextColor { get; }
-		
-		[Export ("secondaryTextColor")]
-		UIColor SecondaryTextColor { get; }
-		
-		[Export ("signedInUserTextColor")]
-		UIColor SignedInUserTextColor { get; }
-		
-		[Export ("labelTextColor")]
-		UIColor LabelTextColor { get; }
-		
-		[Export ("linkTextColor")]
-		UIColor LinkTextColor { get; }
-		
-		[Export ("alertTextColor")]
-		UIColor AlertTextColor { get; }
-		
-		[Export ("navigationBarTintColor")]
-		UIColor NavigationBarTintColor { get; }
+		[Static, Export ("presentUserVoiceInterfaceForParentViewController:")]
+		void PresentUserVoiceInterfaceForParentViewController (UIViewController parentViewController);
 
-		[Export ("navigationBarTextColor")]
-		UIColor NavigationBarTextColor { get; }
+		[Static, Export ("presentUserVoiceContactUsFormForParentViewController:")]
+		void PresentUserVoiceContactUsFormForParentViewController (UIViewController parentViewController);
+
+		[Static, Export ("presentUserVoiceNewIdeaFormForParentViewController:")]
+		void PresentUserVoiceNewIdeaFormForParentViewController (UIViewController parentViewController);
+
+		[Static, Export ("presentUserVoiceForumForParentViewController:")]
+		void PresentUserVoiceForumForParentViewController (UIViewController parentViewController);
+
+		[Static, Export ("getUserVoiceContactUsFormForModalDisplay")]
+		UIViewController GetUserVoiceContactUsFormForModalDisplay { get; }
+
+		[Static, Export ("delegate")]
+		UVDelegate Delegate { get; set; }
+
+		[Static, Export ("version")]
+		string Version { get; }
+
+		[Static, Export ("setExternalId:forScope:")]
+		void SetExternalId (string identifier, string scope);
+
+		[Static, Export ("track:")]
+		void Track (string e);
+
+		[Static, Export ("track:properties:")]
+		void Track (string e, NSDictionary properties);
+
+		[Static, Export ("presentUserVoiceInterfaceForParentViewController:andConfig:")]
+		void PresentUserVoiceInterfaceForParentViewController (UIViewController parentViewController, UVConfig config);
+
+		[Static, Export ("presentUserVoiceContactUsFormForParentViewController:andConfig:")]
+		void PresentUserVoiceContactUsFormForParentViewController (UIViewController parentViewController, UVConfig config);
+
+		[Static, Export ("presentUserVoiceNewIdeaFormForParentViewController:andConfig:")]
+		void PresentUserVoiceNewIdeaFormForParentViewController (UIViewController parentViewController, UVConfig config);
+
+		[Static, Export ("presentUserVoiceForumForParentViewController:andConfig:")]
+		void PresentUserVoiceForumForParentViewController (UIViewController parentViewController, UVConfig config);
+
+		[Static, Export ("presentUserVoiceModalViewControllerForParent:andSite:andKey:andSecret:")]
+		void PresentUserVoiceModalViewControllerForParent (UIViewController viewController, string site, string key, string secret);
+
+		[Static, Export ("presentUserVoiceModalViewControllerForParent:andSite:andKey:andSecret:andSsoToken:")]
+		void PresentUserVoiceModalViewControllerForParent (UIViewController viewController, string site, string key, string secret, string token);
+
+		[Static, Export ("presentUserVoiceModalViewControllerForParent:andSite:andKey:andSecret:andEmail:andDisplayName:andGUID:")]
+		void PresentUserVoiceModalViewControllerForParent (UIViewController viewController, string site, string key, string secret, string email, string displayName, string guid);
 	}
 }
-
