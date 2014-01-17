@@ -44,7 +44,7 @@ ipch/
 *.ncb
 *.opensdf
 *.sdf
-
+*.userprefs
 # Visual Studio profiler
 *.psess
 *.vsp
