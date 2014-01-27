@@ -93,6 +93,9 @@ namespace UserVoice {
 		[Export ("tintColor", ArgumentSemantic.Retain)]
 		UIColor TintColor { get; set; }
 
+		[Export ("navigationBarTintColor", ArgumentSemantic.Retain)]
+		UIColor NavigationBarTintColor { get; set; }
+
 		[Export ("tableViewBackgroundColor", ArgumentSemantic.Retain)]
 		UIColor TableViewBackgroundColor { get; set; }
 

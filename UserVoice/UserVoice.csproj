@@ -43,7 +43,7 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Xamarin.ObjcBinding.CSharp.targets" />
-  <ItemGroup Condition=" '$(Configuration)' != 'Debug' ">
+  <ItemGroup>
     <ObjcBindingNativeLibrary Include="libUserVoice.ios.a">
       <DeployService-Deploy>True</DeployService-Deploy>
     </ObjcBindingNativeLibrary>
